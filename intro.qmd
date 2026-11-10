@@ -467,9 +467,92 @@ y <- list(x = c(1, 2, 4), y = c(TRUE, FALSE), z = c("to", "ti"))
 y
 ```
 
+Named access with the dollar sign `$` returns the underlying object (here a vector).
+
 ```{r}
 y$x
 y$y
 ```
 
+Bracketed access returns a sub-list.
+
+```{r}
+y[3]
+y$z
+typeof(y[3])
+typeof(y$z)
+```
+
+The behaviour of the bracket extraction is almost the same for lists as for
+vectors. 
+
+```{r}
+y
+cat("--\n")
+y[1:2]
+cat("--\n")
+y[-1]
+cat("--\n")
+y[c(TRUE, FALSE, TRUE)]
+```
+### differences with vectors (indexed access)
+
+```{r}
+y
+cat("--\n")
+foo <- y[c("z", "z")]
+foo
+cat("--\n")
+foo["z"] ## limits of names based indexing
+```
+```{r}
+y
+cat("--\n")
+y[c(1, 4)]
+```
+
+Note: `NA` is a missing value in a vector, `NULL` is a missing vector (in a list in general).
+
+### Indexing with double brackets
+
+Double brackets extract an element of the list rather than a sub-list.
+
+```{r}
+y
+cat("--\n")
+y[1]
+cat("--\n")
+y[[1]]
+```
+
+
+```{r}
+y
+cat("--\n")
+y["x"]
+cat("--\n")
+y[["x"]]
+```
+
+```{r}
+y
+x <- 2
+y[[x]]
+```
+
+```{r}
+x <- 1:4
+x[3] <- -2
+x
+x[3:1] <- 4:6
+x
+```
+
+```{r}
+y
+y[2] <- list(1:5)
+y
+y[3] <- NULL
+y
+```
 
