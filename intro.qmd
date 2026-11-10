@@ -5,7 +5,11 @@ format: html
 ---
 
 ```{r}
+#| message: false
 here::i_am("r101.Rproj")
+library(dplyr)
+library(ggplot2)
+set_theme(theme_bw())
 ```
 
 ## Pushing a local repository to an empty remote
@@ -216,10 +220,6 @@ A class is a collection of functions and other elements that give to a R object
 some specific behaviour. Most of the classes are based on lists. 
 
 ### Looking inside an object
-
-```{r}
-library(ggplot2)
-```
 
 ```{r}
 iris_petal_plot <- ggplot(iris, aes(x = `Petal.Length`, y = Petal.Width, colour = Species)) +
