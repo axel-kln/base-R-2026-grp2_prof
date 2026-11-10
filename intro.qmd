@@ -364,10 +364,33 @@ x/sum(x)
 3) `x/c(6,6,6)` -> `c(1/6, 2/6, 3/6)`
 
 ## Advanced indexing
+
 ```{r}
-x <- c(-3, 2, 3, 5)
-x[c(1, 4)]
-x[x > 2]
+x <- -3:9
+x[2]
+```
+
+```{r}
+x
+x[2:4]
+x[seq(1, length(x), by = 2)]
+```
+
+In general, `x[y]` is interpreted the following way:
+
+1) if `y` contains integer values, they are interpreted as indexes in `x`
+2) if `y` contains logical values, `x[i]` is included in the output if `y[i]`
+ is `TRUE`
+
+```{r}
+x <- seq(-5, 11, by = 2)
+x
+x[c(0, 3, 1, 2, 1, 5, 10)]
+x > 0
+x[ x > 0]
+x[ c(TRUE, TRUE, FALSE) ]
+x
+x[ c(TRUE, FALSE) ] ## no warning!
 ```
 
 ## More on lists
