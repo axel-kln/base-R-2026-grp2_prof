@@ -393,6 +393,74 @@ x
 x[ c(TRUE, FALSE) ] ## no warning!
 ```
 
+## High level operations on vectors
+
+### Statistics and aggregation operators
+
+`min()`, `max()`, `mean()`, etc.
+
+### Ordering
+
+```{r}
+x <- 10:-5
+x
+sort(x)
+```
+
+```{r}
+y <- sample(1:10)
+y
+sort(y)
+sort(y, decreasing = TRUE)
+```
+
+```{r}
+x <- 10:-5
+x
+order(x)
+x[order(x)]
+```
+
+```{r}
+y <- sample(1:10)
+y
+order(y)
+```
+
+
+### Matching
+
+`which(x)` returns the indexes of `TRUE` in `x`. 
+
+```{r}
+y <- sample(1:200, 10)
+y
+max(y)
+y == max(y)
+which(y == max(y))
+which(y >= max(y) / 2)
+```
+
+```{r}
+max(c(1, NA, 2), na.rm = TRUE)
+```
+
+In numerical contexts, `TRUE` becomes 1 and `FALSE` becomes 0.
+
+```{r}
+y <- sample(1:200, 10)
+y
+sum(y >= max(y) / 2)
+```
+
+Does not work in the reverse direction:
+
+```{r}
+#| eval: false
+which(0:4)
+```
+
+
 ## More on lists
 ```{r}
 y <- list(x = c(1, 2, 4), y = c(TRUE, FALSE), z = c("to", "ti"))
@@ -403,3 +471,5 @@ y
 y$x
 y$y
 ```
+
+
